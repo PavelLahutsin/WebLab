@@ -13,7 +13,7 @@ namespace _60322_1_Lagutin.Controllers
         {
             SelectList Colors = new SelectList(Enum.GetValues(typeof(System.Drawing.KnownColor)));
             ViewBag.Colors = Colors;
-            ViewBag.MyText = Request.QueryString["Colors"] ?? "Лабораторная работа№2";
+            ViewBag.MyText = Request.QueryString["Colors"] ?? "Лабораторная работа№3";
             return View();
         }
     }

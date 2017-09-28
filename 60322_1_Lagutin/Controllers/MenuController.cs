@@ -18,7 +18,7 @@ namespace _60322_1_Lagutin.Controllers
             {
                 new MenuItem{Name="Домой", Controller="Home",
                 Action="Index", Active=string.Empty},
-                new MenuItem{Name="Каталог", Controller="Product",
+                new MenuItem{Name="Каталог", Controller="Book",
                 Action="List", Active=string.Empty},
                 new MenuItem{Name="Администрирование", Controller="Admin",
                 Action="Index", Active=string.Empty},
