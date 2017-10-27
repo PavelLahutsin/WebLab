@@ -4,15 +4,15 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/MySite.css" rel="stylesheet" />
+    @Styles.Render("~/bundles/styles")
+    @RenderSection("Styles", false)
 </head>
 <body>
-    <!—Заголовок страницы-->
+    <!---->Заголовок страницы-->
     <div class="header-strip">
         <!--Панель аутентификации-->
         <div class="container">
-           @Html.Action("UserInfo", "Menu")</span>
+           @Html.Action("UserInfo", "Menu")
         </div> <!--Панель аутентификации (конец)-->
         <!-- панель навигации-->
         <div class="container">
@@ -72,7 +72,7 @@
     </div><!--Подвал страницы (конец)-->
 
 
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
+@Scripts.Render("~/bundles/jquery")
+@RenderSection("Scripts",false)
 </body>
 </html>

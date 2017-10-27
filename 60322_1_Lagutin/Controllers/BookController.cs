@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using _60322_1_Lagutin.DAL.Entities;
 using _60322_1_Lagutin.DAL.Interfaces;
@@ -12,19 +9,22 @@ namespace _60322_1_Lagutin.Controllers
     public class BookController : Controller
     {
         int pageSize = 3;
-        IRepository<Book> repository;
+        readonly IRepository<Book> _repository;
         public BookController(IRepository<Book> repo)
         {
-            repository = repo;
+            _repository = repo;
         }
 
-        
+
         // GET: Book
-        public ActionResult List(int page=1)
+        public ActionResult List(string group, int page = 1)
         {
-            var lst = repository.GetAll().OrderBy(d => d.Price);
-            return View(PageListViewModel<Book>.CreatePage(lst, page, pageSize));
+            var lst = _repository.GetAll()
+                .Where(d => group == null || d.Genre.Equals(group))
+                .OrderBy(d => d.Author);
+            return View((PageListViewModel<Book>.CreatePage(lst, page, pageSize)));
         }
-        
+
+       
     }
 }

@@ -2,19 +2,23 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using _60322_1_Lagutin.DAL.Entities;
+using _60322_1_Lagutin.DAL.Interfaces;
 
 namespace _60322_1_Lagutin.Controllers
 {
     public class MenuController : Controller
     {
         // GET: Menu
+        private readonly IRepository<Book> _repository;
 
-        List<MenuItem> items;
-        public MenuController()
+        private readonly List<MenuItem> _items;
+
+        public MenuController(IRepository<Book> repository)
         {
-            items = new List<MenuItem>
+            _repository = repository;
+            _items = new List<MenuItem>
             {
                 new MenuItem{Name="Домой", Controller="Home",
                 Action="Index", Active=string.Empty},
@@ -24,26 +28,24 @@ namespace _60322_1_Lagutin.Controllers
                 Action="Index", Active=string.Empty},
             };
         }
-        public ActionResult Index()
-        {
-            return View();
-        }
+        
         public PartialViewResult Main(string a = "Index", string c = "Home")
         {
-            items.First(m => m.Controller == c).Active = "active";
-            return PartialView(items);
+            _items.First(m => string.Equals(m.Controller, c, StringComparison.CurrentCultureIgnoreCase)).Active = "active";
+            return PartialView(_items);
         }
         public PartialViewResult UserInfo()
         {
             return PartialView();
         }
-        public string Side()
+        public PartialViewResult Side()
         {
-            return "Боковая панель";
+            var groups = _repository.GetAll().Select(d => d.Genre).Distinct();
+            return PartialView(groups);
         }
         public PartialViewResult Map()
         {
-            return PartialView(items);
+            return PartialView(_items);
         }
     }
 }
