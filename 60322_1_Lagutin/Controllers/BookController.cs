@@ -22,7 +22,15 @@ namespace _60322_1_Lagutin.Controllers
             var lst = _repository.GetAll()
                 .Where(d => group == null || d.Genre.Equals(group))
                 .OrderBy(d => d.Author);
-            return View((PageListViewModel<Book>.CreatePage(lst, page, pageSize)));
+
+            var model = PageListViewModel<Book>.CreatePage(lst, page,
+                pageSize);
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("ListPatial", model);
+            }
+            return View(model);
+            
         }
 
        
