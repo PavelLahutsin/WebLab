@@ -4,61 +4,60 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace _60322_1_Lagutin.DAL.Repositories
 {
-    public class EFBookRepository : IRepository<Book>
+    public class EfBookRepository : IRepository<Book>
     {
-        BookContext context;
+        readonly BookContext _context;
         /// <summary>
         /// Конструктор класса
         /// </summary>
         /// <param name="name"> имя строки подключения </param>
         /// 
-        public EFBookRepository(string name)
+        public EfBookRepository(string name)
         {
-            context = new BookContext(name);
+            _context = new BookContext(name);
         }
         public void Create(Book t)
         {
-            context.Books.Add(t);
-            context.SaveChanges();
+            _context.Books.Add(t);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            var item = context.Books.Find(id);
+            var item = _context.Books.Find(id);
             if (item != null)
-                context.Books.Remove(item);
-            context.SaveChanges();
+                _context.Books.Remove(item);
+            _context.SaveChanges();
         }
 
         public IEnumerable<Book> Find(Func<Book, bool> predicate)
         {
-            return context.Books.Where(predicate).ToList();
+            return _context.Books.Where(predicate).ToList();
         }
 
         public Book Get(int id)
         {
-            return context.Books.Find(id);
+            return _context.Books.Find(id);
         }
 
         public IEnumerable<Book> GetAll()
         {
-            return context.Books;
+            return _context.Books;
         }
 
-        public Task<Book> GetAsync(int id)
+        public async Task<Book> GetAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Books.FindAsync(id);
         }
 
         public void Update(Book t)
         {
-            context.Entry<Book>(t).State = EntityState.Modified;
-            context.SaveChanges();
+            _context.Entry(t).State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }

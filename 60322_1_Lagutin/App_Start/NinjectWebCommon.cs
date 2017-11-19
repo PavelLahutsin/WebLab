@@ -50,7 +50,7 @@ namespace _60322_1_Lagutin.App_Start
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
-                kernel.Bind<IRepository<Book>>().To<EFBookRepository>().WithConstructorArgument("name", "BookConnection");
+                kernel.Bind<IRepository<Book>>().To<EfBookRepository>().WithConstructorArgument("name", "BookConnection");
 
                 RegisterServices(kernel);
                 return kernel;

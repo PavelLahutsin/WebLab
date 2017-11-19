@@ -2,7 +2,11 @@
 
 <div class="col-md-4">
     <div class="thumbnail">
-        <img height="200" resource="#" alt="NoImage"/>
+@if (Model.Image == null)
+{<p>Нет изображения</p>}
+else
+{
+        <img height="200" src="@Url.Action("getImage", new { id = Model.Id })"  alt="NoImage"/>}
         <div class="caption">
             <div class="item-name">
                 <h3>@Model.Name</h3>

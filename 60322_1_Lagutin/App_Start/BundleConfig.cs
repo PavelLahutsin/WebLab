@@ -28,7 +28,7 @@ namespace _60322_1_Lagutin
 
             bundles.Add(new StyleBundle("~/bundles/styles").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/mysite.css"));
         }
     }
 }
