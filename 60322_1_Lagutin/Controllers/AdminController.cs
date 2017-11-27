@@ -36,19 +36,26 @@ namespace _60322_1_Lagutin.Controllers
         [HttpPost]
         public ActionResult Create(Book book, HttpPostedFileBase imageUpload = null)
         {
-            if (imageUpload != null)
+            if (ModelState.IsValid)
             {
-                var count = imageUpload.ContentLength;
-                book.Image = new byte[count];
-                imageUpload.InputStream.Read(book.Image, 0, (int)count);
-                book.MimeType = imageUpload.ContentType;
+                if (imageUpload != null)
+                {
+                    var count = imageUpload.ContentLength;
+                    book.Image = new byte[count];
+                    imageUpload.InputStream.Read(book.Image, 0, (int) count);
+                    book.MimeType = imageUpload.ContentType;
+                }
+                try
+                {
+                    _repository.Create(book);
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View(book);
+                }
             }
-            try
-            {
-                _repository.Create(book);
-                return RedirectToAction("Index");
-            }
-            catch
+            else
             {
                 return View(book);
             }
@@ -64,20 +71,27 @@ namespace _60322_1_Lagutin.Controllers
         [HttpPost]
         public ActionResult Edit(Book book, HttpPostedFileBase imageUpload = null)
         {
-            if (imageUpload != null)
+            if (ModelState.IsValid)
             {
-                var count = imageUpload.ContentLength;
-                book.Image = new byte[count];
-                imageUpload.InputStream.Read(book.Image, 0, (int)count);
-                book.MimeType = imageUpload.ContentType;
-            }
+                if (imageUpload != null)
+                {
+                    var count = imageUpload.ContentLength;
+                    book.Image = new byte[count];
+                    imageUpload.InputStream.Read(book.Image, 0, (int) count);
+                    book.MimeType = imageUpload.ContentType;
+                }
 
-            try
-            {
-                _repository.Update(book);
-                return RedirectToAction("Index");
+                try
+                {
+                    _repository.Update(book);
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View(book);
+                }
             }
-            catch
+            else
             {
                 return View(book);
             }

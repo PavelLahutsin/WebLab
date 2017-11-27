@@ -6,7 +6,7 @@
 {<p>Нет изображения</p>}
 else
 {
-        <img height="200" src="@Url.Action("getImage", new { id = Model.Id })"  alt="NoImage"/>}
+        <img height="200" src="@Url.Action("GetImage", new { id = Model.Id })"  alt="NoImage"/>}
         <div class="caption">
             <div class="item-name">
                 <h3>@Model.Name</h3>
@@ -16,7 +16,10 @@ else
                 <h3 class="badge">@Model.Price руб</h3>
             </div>
             <div class="centered">
-                <a href="#" class="btn btn-primary">
+                <a href=@Url.Action("AddToCart",
+                            "Cart",
+                            new {id=Model.Id, returnUrl=Request.Path} )
+               class="btn btn-primary">
                     <span class="glyphicon glyphicon-shopping-cart"></span>
                     В корзину
                 </a>

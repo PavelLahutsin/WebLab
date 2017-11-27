@@ -1,0 +1,5 @@
+﻿@model _60322_1_Lagutin.DAL.Entities.Cart
+<a href=@Url.Action("Index","Cart",new {returnUrl=Request.Path })>
+    Общая сумма: @Model.GetTotal() <br/> Выбрано товаров: ( @Model.GetItems().Sum(i=>i.Quantity) )
+    <span class="glyphicon glyphicon-shopping-cart"></span>
+</a>

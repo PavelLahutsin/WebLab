@@ -2,7 +2,7 @@
 
 namespace _60322_1_Lagutin.DAL.Entities
 {
-     public class BookContextInitializer : CreateDatabaseIfNotExists<BookContext>
+     public class BookContextInitializer : DropCreateDatabaseIfModelChanges<BookContext>
     {
         protected override void Seed(BookContext db)
         {

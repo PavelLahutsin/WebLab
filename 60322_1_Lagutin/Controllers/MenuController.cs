@@ -25,14 +25,22 @@ namespace _60322_1_Lagutin.Controllers
                 new MenuItem{Name="Каталог", Controller="Book",
                 Action="List", Active=string.Empty},
                 new MenuItem{Name="Администрирование", Controller="Admin",
-                Action="Index", Active=string.Empty},
+                Action="Index", Active=string.Empty}
             };
         }
         
         public PartialViewResult Main(string a = "Index", string c = "Home")
         {
-            _items.First(m => string.Equals(m.Controller, c, StringComparison.CurrentCultureIgnoreCase)).Active = "active";
-            return PartialView(_items);
+            try
+            {
+                _items.First(m => string.Equals(m.Controller, c, StringComparison.CurrentCultureIgnoreCase)).Active = "active";
+                return PartialView(_items);
+            }
+            catch (Exception e)
+            {
+                return PartialView(_items);
+            }
+            
         }
         public PartialViewResult UserInfo()
         {
