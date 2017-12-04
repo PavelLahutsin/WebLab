@@ -1,7 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using _60322_1_Lagutin;
 
-[assembly: OwinStartupAttribute(typeof(_60322_1_Lagutin.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 namespace _60322_1_Lagutin
 {
     public partial class Startup

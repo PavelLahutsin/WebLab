@@ -1,10 +1,10 @@
-﻿using _60322_1_Lagutin.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using _60322_1_Lagutin.DAL.Entities;
 using _60322_1_Lagutin.DAL.Interfaces;
+using _60322_1_Lagutin.Models;
 
 namespace _60322_1_Lagutin.Controllers
 {

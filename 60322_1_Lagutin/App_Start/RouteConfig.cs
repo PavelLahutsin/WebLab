@@ -35,7 +35,7 @@ namespace _60322_1_Lagutin
                 {
                     controller = "book",
                     action = "list",
-                    page = 1,
+                    page = 1
                     
                 });
 

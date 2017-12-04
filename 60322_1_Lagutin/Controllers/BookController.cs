@@ -1,9 +1,9 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using _60322_1_Lagutin.DAL.Entities;
 using _60322_1_Lagutin.DAL.Interfaces;
 using _60322_1_Lagutin.Models;
-using System.Threading.Tasks;
 
 namespace _60322_1_Lagutin.Controllers
 {
@@ -15,6 +15,8 @@ namespace _60322_1_Lagutin.Controllers
         {
             _repository = repo;
         }
+
+
 
 
         // GET: Book
@@ -39,8 +41,7 @@ namespace _60322_1_Lagutin.Controllers
             Book prod = await _repository.GetAsync(id); ;
             if (prod != null)
                 return File(prod.Image, prod.MimeType);
-            else
-                return null;
+            return null;
         }
     }
 }

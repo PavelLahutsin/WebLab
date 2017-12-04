@@ -35,7 +35,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink(@Html.DisplayFor(modelItem =>
+            @Html.ActionLink(Html.DisplayFor(modelItem =>
                 item.Name).ToString(),
                 "Edit",
                 new { id = item.Id })

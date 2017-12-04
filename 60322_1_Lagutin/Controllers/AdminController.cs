@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using _60322_1_Lagutin.DAL.Entities;
 using _60322_1_Lagutin.DAL.Interfaces;
-using _60322_1_Lagutin.DAL.Repositories;
 
 namespace _60322_1_Lagutin.Controllers
 {
     public class AdminController : Controller
     {
-        private IRepository<Book> _repository;
+        private readonly IRepository<Book> _repository;
 
         public AdminController(IRepository<Book> repository)
         {
@@ -42,7 +38,7 @@ namespace _60322_1_Lagutin.Controllers
                 {
                     var count = imageUpload.ContentLength;
                     book.Image = new byte[count];
-                    imageUpload.InputStream.Read(book.Image, 0, (int) count);
+                    imageUpload.InputStream.Read(book.Image, 0, count);
                     book.MimeType = imageUpload.ContentType;
                 }
                 try
@@ -55,10 +51,7 @@ namespace _60322_1_Lagutin.Controllers
                     return View(book);
                 }
             }
-            else
-            {
-                return View(book);
-            }
+            return View(book);
         }
 
         // GET: Admin/Edit/5
@@ -77,7 +70,7 @@ namespace _60322_1_Lagutin.Controllers
                 {
                     var count = imageUpload.ContentLength;
                     book.Image = new byte[count];
-                    imageUpload.InputStream.Read(book.Image, 0, (int) count);
+                    imageUpload.InputStream.Read(book.Image, 0, count);
                     book.MimeType = imageUpload.ContentType;
                 }
 
@@ -91,32 +84,9 @@ namespace _60322_1_Lagutin.Controllers
                     return View(book);
                 }
             }
-            else
-            {
-                return View(book);
-            }
+            return View(book);
         }
 
-        // GET: Admin/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Admin/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }

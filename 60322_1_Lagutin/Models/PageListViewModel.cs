@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace _60322_1_Lagutin.Models
 {
@@ -23,7 +22,7 @@ namespace _60322_1_Lagutin.Models
         /// <param name="current">номер текущей страницы</param>
         private PageListViewModel(List<T> items, int total, int current)
         {
-            this.AddRange(items);
+            AddRange(items);
             TotalPages = total;
             CurrentPage = current;
         }

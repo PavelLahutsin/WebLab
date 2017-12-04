@@ -22,9 +22,7 @@ namespace _60322_1_Lagutin
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+           
 
             bundles.Add(new StyleBundle("~/bundles/styles").Include(
                       "~/Content/bootstrap.css",

@@ -1,10 +1,10 @@
-﻿using _60322_1_Lagutin.DAL.Entities;
-using _60322_1_Lagutin.DAL.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using _60322_1_Lagutin.DAL.Entities;
+using _60322_1_Lagutin.DAL.Interfaces;
 
 namespace _60322_1_Lagutin.DAL.Repositories
 {

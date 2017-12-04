@@ -1,7 +1,6 @@
 ﻿
 
 using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
 
 namespace _60322_1_Lagutin.DAL.Entities
 {

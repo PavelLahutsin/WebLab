@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using _60322_1_Lagutin.DAL.Entities;
 using _60322_1_Lagutin.DAL.Interfaces;
 
@@ -32,6 +28,7 @@ namespace _60322_1_Lagutin.Controllers
             return cart;
         }
 
+        [Authorize]
         public ActionResult Index(string returnUrl)
         {
             TempData["returnUrl"] = returnUrl;
